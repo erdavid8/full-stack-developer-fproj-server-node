@@ -9,14 +9,21 @@ const petController = (app) => {
 //  app.put('/api/pet/:uid', updateProfile);
 }
 
+// find all pets
 const findAllPet = (req, res) => {
     res.json(pets);
 }
 
+// find pet by ID
 const findPetById = (req, res) => {
     const petId = req.params.uid;
-    const pet = users.find(u => u._id === petId);
-    res.json(pet);
+    const pet = pets.find(u => u._id === petId);
+
+    if (pet) {
+        res.json(pet);                                     // pet is in database
+    } else {
+        res.sendStatus(404);                                // pet not found
+    }
 }
 
 export default petController;
