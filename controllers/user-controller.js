@@ -2,7 +2,7 @@
 import userDao from '../controllers/dbase/users/user-dao.js';
 
 const userController = (app) => {
-    //app.post('/api/user', createProfile);
+    app.post('/api/user', createProfile);
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
     app.get('/api/user', findAllProfile);
@@ -10,11 +10,11 @@ const userController = (app) => {
     //app.put('/api/user/:uid', updateProfile);
 }
 
-/*
+
 // create new profile(somewhat same as signup)
 const createProfile = async (req, res) => {
     const user = req.body;
-  newUser._id = (new Date()).getTime() + '';
+/*  newUser._id = (new Date()).getTime() + '';
     newUser.name = "Gilbert Repato";
     newUser.email = "gilbert@yahoo.com";
     newUser.password = "987654";
@@ -26,12 +26,12 @@ const createProfile = async (req, res) => {
     newUser.following = ["123", "567"];
     console.log(newUser)
     users.push(newUser);
-
+*/
     const insertUser = await userDao.createProfile(user);
 
     res.json(insertUser);
 }
-*/
+
 
 // find user using ID
 const findProfileById = async (req, res) => {
