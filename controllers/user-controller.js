@@ -75,7 +75,8 @@ const updateProfile = (req, res) => {
 */
 
 const addlikedItem = async (req, res) => {
-    const item = req.body
+    //const item = req.body
+    const item = "here";
     console.log(item);
     console.log("item here")
     const userID = req.params.uid;
