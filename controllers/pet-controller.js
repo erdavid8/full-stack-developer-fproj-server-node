@@ -1,7 +1,6 @@
 import pets from "./users/pet.js";
 import users from "./users/users.js";
 import petDao from "./dbase/pets/pet-dao.js";
-import userDao from "./dbase/users/user-dao.js";
 
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
@@ -14,7 +13,7 @@ const petController = (app) => {
 // create new pet profile
 const createPetProfile = async (req, res) => {
     const pet = req.body;
-    const insertPet = await userDao.createPetProfile(pet);
+    const insertPet = await petDao.createPetProfile(pet);
     res.json(insertPet);
 }
 
