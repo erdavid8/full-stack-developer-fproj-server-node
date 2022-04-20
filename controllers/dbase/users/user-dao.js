@@ -1,5 +1,5 @@
 import userAdminModel from "./user-admin-model.js";
-import userBuyerModel from "./user-model.js";
+import userBuyerModel from "./user-buyer-model.js";
 import userSellerModel from "./user-model.js";
 
 // admin DAO

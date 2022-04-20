@@ -6,6 +6,7 @@ const userController = (app) => {
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
     app.get('/api/user', findAllProfileAdmin);
+    app.get('/api/user', findAllProfileBuyer);
     app.delete('/api/user/:uid', deleteProfile);
     app.put('/api/user/:uid', addlikedItem);
 }
@@ -52,11 +53,17 @@ const findProfileByEmail = async (req, res) => {
     }
 }
 
-// find all users
+// find all users admin
 const findAllProfileAdmin = async (req, res) => {
 
     const user = await userDao.findAllProfileAdmin();
-    //console.log(user);
+    res.json(user);
+}
+
+// find all users buyer
+const findAllProfileBuyer = async (req, res) => {
+
+    const user = await userDao.findAllProfileBuyer();
     res.json(user);
 }
 
