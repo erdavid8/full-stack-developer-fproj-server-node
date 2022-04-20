@@ -15,6 +15,7 @@ const userController = (app) => {
 const createProfile = async (req, res) => {
     const user = req.body;
     console.log(user);
+    console.log("iam here");
 /*  newUser._id = (new Date()).getTime() + '';
     newUser.name = "Gilbert Repato";
     newUser.email = "gilbert@yahoo.com";
@@ -29,6 +30,7 @@ const createProfile = async (req, res) => {
     users.push(newUser);
 */
     const insertUser = await userDao.createProfile(user);
+    console.log(insertUser);
 
     res.json(insertUser);
 }
