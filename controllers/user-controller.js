@@ -12,7 +12,7 @@ const userController = (app) => {
 }
 
 // create new profile(somewhat same as signup)
-const createProfile = (req, res) => {
+const createProfile = async (req, res) => {
     const user = req.body;
 /*  newUser._id = (new Date()).getTime() + '';
     newUser.name = "Gilbert Repato";
