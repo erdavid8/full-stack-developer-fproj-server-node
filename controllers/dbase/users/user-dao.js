@@ -1,11 +1,30 @@
-import userModel from "./user-model.js";
+import userAdminModel from "./user-model.js";
+import userBuyerModel from "./user-model.js";
+import userSellerModel from "./user-model.js";
 
-const findAllProfile = () => userModel.find();
-const findProfileById = (id) => userModel.findById(id);
-const findProfileByEmail = (email) => userModel.findOne({email});
-const createProfile = (user) => userModel.insertMany(user);
-const deleteProfile = (id) => userModel.deleteOne({_id: id})
-const addlikedItem = (id, item) => userModel.updateOne({_id: id}, {$set: {_id: item}})
+// admin DAO
+const findAllProfileAdmin = () => userAdminModel.find();
+const findProfileByIdAdmin = (id) => userAdminModel.findById(id);
+const findProfileByEmailAdmin = (email) => userAdminModel.findOne({email});
+const createProfileAdmin = (user) => userAdminModel.insertMany(user);
+const deleteProfileAdmin = (id) => userAdminModel.deleteOne({_id: id})
+const addlikedItem = (id, item) => userAdminModel.updateOne({_id: id}, {$set: {_id: item}})
 
-export default {findAllProfile, findProfileById, findProfileByEmail,
-    createProfile, deleteProfile, addlikedItem};
+// buyer DAO
+const findAllProfileBuyer = () => userBuyerModel.find();
+const findProfileByIdBuyer = (id) => userBuyerModel.findById(id);
+const findProfileByEmailBuyer = (email) => userBuyerModel.findOne({email});
+const createProfileBuyer = (user) => userBuyerModel.insertMany(user);
+const deleteProfileBuyer = (id) => userBuyerModel.deleteOne({_id: id})
+
+// seller DAO
+const findAllProfileSeller = () => userSellerModel.find();
+const findProfileByIdSeller = (id) => userSellerModel.findById(id);
+const findProfileByEmailSeller = (email) => userSellerModel.findOne({email});
+const createProfileSeller = (user) => userSellerModel.insertMany(user);
+const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
+
+export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
+    createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
+    createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, findAllProfileSeller,
+    findProfileByIdSeller, findProfileByEmailSeller, createProfileSeller, deleteProfileSeller, addlikedItem, };

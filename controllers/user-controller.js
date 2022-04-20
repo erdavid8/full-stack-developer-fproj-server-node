@@ -1,4 +1,4 @@
-//import users from "./users/users.js";
+// import users from "./users/users.js";
 import userDao from '../controllers/dbase/users/user-dao.js';
 
 const userController = (app) => {
@@ -14,14 +14,24 @@ const userController = (app) => {
 // create new profile(somewhat same as signup)
 const createProfile = async (req, res) => {
     const user = req.body;
-    const insertUser = await userDao.createProfile(user);
+    const type = req.params.type;
+    let insertUser;
+
+    if (type === 'admin') {
+        insertUser = await userDao.createProfileAdmin(user);
+    } else if (type === 'buyer') {
+        insertUser = await userDao.createProfileBuyer(user);
+    } else { // seller
+        insertUser = await userDao.createProfileSeller(user);
+    }
+
     res.json(insertUser);
 }
 
 // find user using ID
 const findProfileById = async (req, res) => {
     const userId = req.params.uid;
-    const user = await userDao.findProfileById(userId);
+    const user = await userDao.findProfileByIdSeller(userId);
 
     if (user) {
         res.json(user);                                             // user is in database
@@ -33,7 +43,7 @@ const findProfileById = async (req, res) => {
 // find user by email
 const findProfileByEmail = async (req, res) => {
     const userEmail = req.params['email'];
-    const user = await userDao.findProfileByEmail(userEmail);
+    const user = await userDao.findProfileByEmailSeller(userEmail);
 
     if (user) {
         res.json(user);                                             // user is in database
@@ -44,7 +54,7 @@ const findProfileByEmail = async (req, res) => {
 
 // find all users
 const findAllProfile = async (req, res) => {
-    const user = await userDao.findAllProfile();
+    const user = await userDao.findAllProfileSeller();
     //console.log(user);
     res.json(user);
 }
@@ -52,12 +62,12 @@ const findAllProfile = async (req, res) => {
 // delete user profile
 const deleteProfile = async (req, res) => {
     const userId = req.params.uid;
-    const userDel = await userDao.deleteProfile(userId);
+    const userDel = await userDao.deleteProfileSeller(userId);
 
     res.json(userDel);
 }
 
-
+/*
 // do not use for now - not updated
 const updateProfile = (req, res) => {
     const userId = req.params.uid;
@@ -72,7 +82,7 @@ const updateProfile = (req, res) => {
     Object.assign(user, updatedUser);                                    // assign new values to existing
     res.sendStatus(200);
 }
-
+*/
 
 const addlikedItem = async (req, res) => {
     //const item = req.body
