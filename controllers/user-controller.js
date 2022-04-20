@@ -5,7 +5,7 @@ const userController = (app) => {
     app.post('/api/user', createProfile);
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
-    app.get('/api/user', findAllProfile);
+    app.get('/api/user', findAllProfileAdmin);
     app.delete('/api/user/:uid', deleteProfile);
     app.put('/api/user/:uid', addlikedItem);
 }
@@ -53,13 +53,9 @@ const findProfileByEmail = async (req, res) => {
 }
 
 // find all users
-const findAllProfile = async (req, res) => {
+const findAllProfileAdmin = async (req, res) => {
 
-    //const check = req.body;
-    const type = req.params.type;
-    console.log(type);
-
-    const user = await userDao.findAllProfileSeller();
+    const user = await userDao.findAllProfileAdmin();
     //console.log(user);
     res.json(user);
 }

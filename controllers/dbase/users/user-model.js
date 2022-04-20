@@ -5,6 +5,6 @@ import userSellerSchema from "./user-seller-schema.js";
 
 //const userAdminModel = mongoose.model('UsersAdminModel', userAdminSchema);
 //const userBuyerModel = mongoose.model('UsersBuyerModel', userBuyerSchema);
-const userSellerModel = mongoose.model('UsersModel', userAdminSchema);
+const userSellerModel = mongoose.model('UsersModel', userSellerSchema);
 
 export default userSellerModel;

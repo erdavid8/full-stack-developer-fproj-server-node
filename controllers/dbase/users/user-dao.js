@@ -1,4 +1,4 @@
-import userAdminModel from "./user-model.js";
+import userAdminModel from "./user-admin-model.js";
 import userBuyerModel from "./user-model.js";
 import userSellerModel from "./user-model.js";
 
