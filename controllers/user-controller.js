@@ -81,7 +81,8 @@ const addlikedItem = async (req, res) => {
     console.log("item here")
     const userID = req.params.uid;
     console.log(userID);
-    const status = await userDao.addlikedItem(userID, item);
+    const status = "none";
+//    const status = await userDao.addlikedItem(userID, item);
     res.json(status);
 }
 
