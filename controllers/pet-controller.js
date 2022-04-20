@@ -4,11 +4,18 @@ import petDao from "./dbase/pets/pet-dao.js";
 import userDao from "./dbase/users/user-dao.js";
 
 const petController = (app) => {
-//  app.post('/api/pet', createProfile);
+    app.post('/api/pet', createPetProfile);
     app.get('/api/pet/:uid', findPetById);
     app.get('/api/pet', findAllPet);
-//  app.delete('/api/pet/:uid', deleteProfile);
+    app.delete('/api/pet/:uid', deletePet);
 //  app.put('/api/pet/:uid', updateProfile);
+}
+
+// create new pet profile
+const createPetProfile = async (req, res) => {
+    const pet = req.body;
+    const insertPet = await userDao.createPetProfile(pet);
+    res.json(insertPet);
 }
 
 // find all pets
@@ -27,6 +34,14 @@ const findPetById = async (req, res) => {
     } else {
         res.sendStatus(404);                                // pet not found
     }
+}
+
+// delete pet profile
+const deletePet = async (req, res) => {
+    const petId = req.params.uid;
+    const petDel = await petDao.deletePet(petId);
+
+    res.json(petDel);
 }
 
 export default petController;
