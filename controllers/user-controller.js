@@ -57,7 +57,7 @@ const deleteProfile = async (req, res) => {
     res.json(userDel);
 }
 
-/*
+
 // do not use for now - not updated
 const updateProfile = (req, res) => {
     const userId = req.params.uid;
@@ -72,7 +72,7 @@ const updateProfile = (req, res) => {
     Object.assign(user, updatedUser);                                    // assign new values to existing
     res.sendStatus(200);
 }
-*/
+
 
 const addlikedItem = async (req, res) => {
     //const item = req.body
