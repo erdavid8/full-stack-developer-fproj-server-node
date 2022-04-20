@@ -1,4 +1,5 @@
-import users from "./users/users.js";
+//import users from "./users/users.js";
+import userDao from '../controllers/dbase/users/user-dao.js';
 
 const userController = (app) => {
     app.post('/api/user', createProfile);
@@ -28,9 +29,10 @@ const createProfile = (req, res) => {
 }
 
 // find user using ID
-const findProfileById = (req, res) => {
+const findProfileById = async (req, res) => {
     const userId = req.params.uid;
-    const user = users.find(u => u._id === userId);
+    // const user = users.find(u => u._id === userId);
+    const user = await userDao.findProfileById(userId);
 
     if (user) {
         res.json(user);                                     // user is in database
@@ -58,8 +60,10 @@ const findProfileByCredentials = (req, res) => {
 }
 
 // find all users
-const findAllProfile = (req, res) => {
-    res.json(users);
+const findAllProfile = async (req, res) => {
+    const user = await userDao.findAllProfile();
+    //console.log(user);
+    res.json(user);
 }
 
 // delete user profile
