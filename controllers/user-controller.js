@@ -8,8 +8,8 @@ const userController = (app) => {
     app.post('/api/user-seller', createProfileSeller);
     //findProfileById:
     app.get('/api/user-admin/:uid', findProfileByIdAdmin);
-    app.get('/api/user-admin/:uid', findProfileByIdBuyer);
-    app.get('/api/user-admin/:uid', findProfileByIdSeller);
+    app.get('/api/user-buyer/:uid', findProfileByIdBuyer);
+    app.get('/api/user-seller/:uid', findProfileByIdSeller);
     //findProfileByEmail:
     app.get('/api/user-admin/email/:email', findProfileByEmailAdmin);
     app.get('/api/user-buyer/email/:email', findProfileByEmailBuyer);
