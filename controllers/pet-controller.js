@@ -1,5 +1,7 @@
 import pets from "./users/pet.js";
 import users from "./users/users.js";
+import petDao from "./dbase/pets/pet-dao.js";
+import userDao from "./dbase/users/user-dao.js";
 
 const petController = (app) => {
 //  app.post('/api/pet', createProfile);
@@ -10,14 +12,15 @@ const petController = (app) => {
 }
 
 // find all pets
-const findAllPet = (req, res) => {
-    res.json(pets);
+const findAllPet = async (req, res) => {
+    const pet = await petDao.findAllPets();
+    res.json(pet);
 }
 
 // find pet by ID
-const findPetById = (req, res) => {
+const findPetById = async (req, res) => {
     const petId = req.params.uid;
-    const pet = pets.find(u => u._id === petId);
+    const pet = await petDao.findPetByID(petId);
 
     if (pet) {
         res.json(pet);                                     // pet is in database
