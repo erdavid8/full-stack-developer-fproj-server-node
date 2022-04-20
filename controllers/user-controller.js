@@ -6,7 +6,7 @@ const userController = (app) => {
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
     app.get('/api/user', findAllProfile);
-    //app.delete('/api/user/:uid', deleteProfile);
+    app.delete('/api/user/:uid', deleteProfile);
     //app.put('/api/user/:uid', updateProfile);
 }
 
