@@ -1,6 +1,6 @@
 import userAdminModel from "./user-admin-model.js";
 import userBuyerModel from "./user-buyer-model.js";
-import userSellerModel from "./user-model.js";
+import userSellerModel from "./user-seller-model.js";
 
 // admin DAO
 const findAllProfileAdmin = () => userAdminModel.find();

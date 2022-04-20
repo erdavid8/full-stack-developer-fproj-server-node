@@ -5,8 +5,11 @@ const userController = (app) => {
     app.post('/api/user', createProfile);
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
+    //findAllProfile:
     app.get('/api/user-admin', findAllProfileAdmin);
     app.get('/api/user-buyer', findAllProfileBuyer);
+    app.get('/api/user-seller', findAllProfileSeller);
+    //delete:
     app.delete('/api/user/:uid', deleteProfile);
     app.put('/api/user/:uid', addlikedItem);
 }
@@ -55,15 +58,19 @@ const findProfileByEmail = async (req, res) => {
 
 // find all users admin
 const findAllProfileAdmin = async (req, res) => {
-
     const user = await userDao.findAllProfileAdmin();
     res.json(user);
 }
 
 // find all users buyer
 const findAllProfileBuyer = async (req, res) => {
-
     const user = await userDao.findAllProfileBuyer();
+    res.json(user);
+}
+
+// find all users seller
+const findAllProfileSeller = async (req, res) => {
+    const user = await userDao.findAllProfileSeller();
     res.json(user);
 }
 
