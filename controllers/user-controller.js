@@ -14,6 +14,7 @@ const userController = (app) => {
 // create new profile(somewhat same as signup)
 const createProfile = async (req, res) => {
     const user = req.body;
+    console.log(user);
 /*  newUser._id = (new Date()).getTime() + '';
     newUser.name = "Gilbert Repato";
     newUser.email = "gilbert@yahoo.com";
