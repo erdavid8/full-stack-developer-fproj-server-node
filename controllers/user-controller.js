@@ -76,7 +76,9 @@ const updateProfile = (req, res) => {
 
 const addlikedItem = async (req, res) => {
     const item = req.body
+    console.log(item);
     const userID = req.params.uid;
+    console.log(userID);
     const status = await userDao.addlikedItem(userID, item);
     res.json(status);
 }
