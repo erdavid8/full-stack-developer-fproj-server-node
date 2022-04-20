@@ -2,12 +2,12 @@
 import userDao from '../controllers/dbase/users/user-dao.js';
 
 const userController = (app) => {
-    app.post('/api/user', createProfile);
+    //app.post('/api/user', createProfile);
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
     app.get('/api/user', findAllProfile);
     app.delete('/api/user/:uid', deleteProfile);
-    app.put('/api/user/:uid', updateProfile);
+    //app.put('/api/user/:uid', updateProfile);
 }
 
 /*
