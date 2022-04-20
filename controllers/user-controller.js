@@ -5,6 +5,7 @@ const userController = (app) => {
     app.post('/api/user', createProfile);
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
+    app.post('/api/user/credentials', findProfileByCredentials);
     app.get('/api/user', findAllProfile);
     app.delete('/api/user/:uid', deleteProfile);
     app.put('/api/user/:uid', updateProfile);
@@ -12,8 +13,8 @@ const userController = (app) => {
 
 // create new profile(somewhat same as signup)
 const createProfile = (req, res) => {
-    const newUser = req.body;
-    newUser._id = (new Date()).getTime() + '';
+    const user = req.body;
+/*  newUser._id = (new Date()).getTime() + '';
     newUser.name = "Gilbert Repato";
     newUser.email = "gilbert@yahoo.com";
     newUser.password = "987654";
@@ -25,13 +26,15 @@ const createProfile = (req, res) => {
     newUser.following = ["123", "567"];
     console.log(newUser)
     users.push(newUser);
-    res.json(newUser);
+*/
+    const insertUser = await userDao.createProfile(user);
+
+    res.json(insertUser);
 }
 
 // find user using ID
 const findProfileById = async (req, res) => {
     const userId = req.params.uid;
-    // const user = users.find(u => u._id === userId);
     const user = await userDao.findProfileById(userId);
 
     if (user) {
@@ -42,9 +45,10 @@ const findProfileById = async (req, res) => {
 }
 
 // find user by email
-const findProfileByEmail = (req, res) => {
+const findProfileByEmail = async (req, res) => {
     const userEmail = req.params['email'];
-    const user = users.find(u => u.email === userEmail);
+    // const user = users.find(u => u.email === userEmail);
+    const user = await userDao.findProfileByEmail(userEmail);
 
     if (user) {
         res.json(user);                                     // user is in database
@@ -53,10 +57,17 @@ const findProfileByEmail = (req, res) => {
     }
 }
 
-// find user by credentials - IN-PROGRESS
-const findProfileByCredentials = (req, res) => {
+// find user by credentials
+const findProfileByCredentials = async (req, res) => {
     const credentials = req.body;
     const {email, password} = credentials;
+    const user = await userDao.findProfileByEmail(email, password);
+
+    if (user) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(403);
+    }
 }
 
 // find all users
@@ -67,13 +78,15 @@ const findAllProfile = async (req, res) => {
 }
 
 // delete user profile
-const deleteProfile = (req, res) => {
+const deleteProfile = async (req, res) => {
     const userId = req.params.uid;
-    const usersIndex = users.findIndex(u => u._id === userId);          // find index of user
-    users.splice(usersIndex, 1)                               // delete user
-    res.sendStatus(200);
-}
+//    const usersIndex = users.findIndex(u => u._id === userId);          // find index of user
+//    users.splice(usersIndex, 1)                               // delete user
 
+    const userDel = await userDao.deleteProfile(userId);
+
+    res.json(userDel);
+}
 
 
 // do not use for now - not updated

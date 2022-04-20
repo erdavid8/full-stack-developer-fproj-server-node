@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import userController from "./controllers/user-controller.js";
 import petController from "./controllers/pet-controller.js";
 
-
 //'mongodb+srv://dbUser:dbUser@cluster0.xdgpa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 //'mongodb://localhost:27017/webdev'
 mongoose.connect('mongodb+srv://dbUser:dbUser@cluster0.xdgpa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
