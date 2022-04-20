@@ -54,6 +54,11 @@ const findProfileByEmail = async (req, res) => {
 
 // find all users
 const findAllProfile = async (req, res) => {
+
+    //const check = req.body;
+    const type = req.params.type;
+    console.log(type);
+
     const user = await userDao.findAllProfileSeller();
     //console.log(user);
     res.json(user);
