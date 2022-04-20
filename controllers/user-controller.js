@@ -2,38 +2,80 @@
 import userDao from '../controllers/dbase/users/user-dao.js';
 
 const userController = (app) => {
-    app.post('/api/user', createProfile);
-    app.get('/api/user/:uid', findProfileById);
-    app.get('/api/user/email/:email', findProfileByEmail);
+    //createProfile:
+    app.post('/api/user-admin', createProfileAdmin);
+    app.post('/api/user-buyer', createProfileBuyer);
+    app.post('/api/user-seller', createProfileSeller);
+    //findProfileById:
+    app.get('/api/user-admin/:uid', findProfileByIdAdmin);
+    app.get('/api/user-admin/:uid', findProfileByIdBuyer);
+    app.get('/api/user-admin/:uid', findProfileByIdSeller);
+    //findProfileByEmail:
+    app.get('/api/user-admin/email/:email', findProfileByEmailAdmin);
+    app.get('/api/user-buyer/email/:email', findProfileByEmailBuyer);
+    app.get('/api/user-seller/email/:email', findProfileByEmailSeller);
     //findAllProfile:
     app.get('/api/user-admin', findAllProfileAdmin);
     app.get('/api/user-buyer', findAllProfileBuyer);
     app.get('/api/user-seller', findAllProfileSeller);
     //delete:
-    app.delete('/api/user/:uid', deleteProfile);
+    app.delete('/api/user-admin/:uid', deleteProfileAdmin);
+    app.delete('/api/user-buyer/:uid', deleteProfileBuyer);
+    app.delete('/api/user-seller/:uid', deleteProfileSeller);
     app.put('/api/user/:uid', addlikedItem);
 }
 
 
-// create new profile(somewhat same as signup)
-const createProfile = async (req, res) => {
+// create new profile(somewhat same as signup) admin
+const createProfileAdmin = async (req, res) => {
     const user = req.body;
-    const type = req.params.type;
-    let insertUser;
-
-    if (type === 'admin') {
-        insertUser = await userDao.createProfileAdmin(user);
-    } else if (type === 'buyer') {
-        insertUser = await userDao.createProfileBuyer(user);
-    } else { // seller
-        insertUser = await userDao.createProfileSeller(user);
-    }
+    const insertUser = await userDao.createProfileAdmin(user);
 
     res.json(insertUser);
 }
 
-// find user using ID
-const findProfileById = async (req, res) => {
+// create new profile(somewhat same as signup) buyer
+const createProfileBuyer = async (req, res) => {
+    const user = req.body;
+    const insertUser = await userDao.createProfileBuyer(user);
+
+    res.json(insertUser);
+}
+
+// create new profile(somewhat same as signup) seller
+const createProfileSeller = async (req, res) => {
+    const user = req.body;
+    const insertUser = await userDao.createProfileSeller(user);
+
+    res.json(insertUser);
+}
+
+// find user admin using ID
+const findProfileByIdAdmin = async (req, res) => {
+    const userId = req.params.uid;
+    const user = await userDao.findProfileByIdAdmin(userId);
+
+    if (user) {
+        res.json(user);                                             // user is in database
+    } else {
+        res.sendStatus(404);                                        // user not found
+    }
+}
+
+// find user buyer using ID
+const findProfileByIdBuyer = async (req, res) => {
+    const userId = req.params.uid;
+    const user = await userDao.findProfileByIdBuyer(userId);
+
+    if (user) {
+        res.json(user);                                             // user is in database
+    } else {
+        res.sendStatus(404);                                        // user not found
+    }
+}
+
+// find user seller using ID
+const findProfileByIdSeller = async (req, res) => {
     const userId = req.params.uid;
     const user = await userDao.findProfileByIdSeller(userId);
 
@@ -44,8 +86,32 @@ const findProfileById = async (req, res) => {
     }
 }
 
-// find user by email
-const findProfileByEmail = async (req, res) => {
+// find user admin by email
+const findProfileByEmailAdmin = async (req, res) => {
+    const userEmail = req.params['email'];
+    const user = await userDao.findProfileByEmailAdmin(userEmail);
+
+    if (user) {
+        res.json(user);                                             // user is in database
+    } else {
+        res.sendStatus(404);                                        // user not found
+    }
+}
+
+// find user buyer by email
+const findProfileByEmailBuyer = async (req, res) => {
+    const userEmail = req.params['email'];
+    const user = await userDao.findProfileByEmailBuyer(userEmail);
+
+    if (user) {
+        res.json(user);                                             // user is in database
+    } else {
+        res.sendStatus(404);                                        // user not found
+    }
+}
+
+// find user seller by email
+const findProfileByEmailSeller = async (req, res) => {
     const userEmail = req.params['email'];
     const user = await userDao.findProfileByEmailSeller(userEmail);
 
@@ -74,8 +140,24 @@ const findAllProfileSeller = async (req, res) => {
     res.json(user);
 }
 
-// delete user profile
-const deleteProfile = async (req, res) => {
+// delete profile admin
+const deleteProfileAdmin = async (req, res) => {
+    const userId = req.params.uid;
+    const userDel = await userDao.deleteProfileAdmin(userId);
+
+    res.json(userDel);
+}
+
+// delete profile admin
+const deleteProfileBuyer = async (req, res) => {
+    const userId = req.params.uid;
+    const userDel = await userDao.deleteProfileBuyer(userId);
+
+    res.json(userDel);
+}
+
+// delete profile seller
+const deleteProfileSeller = async (req, res) => {
     const userId = req.params.uid;
     const userDel = await userDao.deleteProfileSeller(userId);
 
