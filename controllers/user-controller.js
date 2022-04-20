@@ -5,8 +5,8 @@ const userController = (app) => {
     app.post('/api/user', createProfile);
     app.get('/api/user/:uid', findProfileById);
     app.get('/api/user/email/:email', findProfileByEmail);
-    app.get('/api/user', findAllProfileAdmin);
-    app.get('/api/user', findAllProfileBuyer);
+    app.get('/api/user-admin', findAllProfileAdmin);
+    app.get('/api/user-buyer', findAllProfileBuyer);
     app.delete('/api/user/:uid', deleteProfile);
     app.put('/api/user/:uid', addlikedItem);
 }
