@@ -5,7 +5,7 @@ import petDao from "./dbase/pets/pet-dao.js";
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
     app.get('/api/pet/:uid', findPetById);
-    app.get('/api/pet/:name', findPetByName);
+    app.get('/api/pet/:uid', findPetByName);
     app.get('/api/pet', findAllPet);
     app.delete('/api/pet/:uid', deletePet);
 //  app.put('/api/pet/:uid', updateProfile);
@@ -38,7 +38,7 @@ const findPetById = async (req, res) => {
 
 // find pet by name
 const findPetByName = async (req, res) => {
-    const petName = req.params['name'];
+    const petName = req.params.uid;
     console.log(petName);
     console.log("IAM HERE")
 /*    const pet = await petDao.findPetByName(petName);
