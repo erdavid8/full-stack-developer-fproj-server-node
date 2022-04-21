@@ -202,7 +202,9 @@ const adoptedItemsSeller = async (req, res) => {
 // remove adopted item seller
 const unadoptedItemSeller = async (req, res) => {
     const updateItem = req.body['adoptedItems'];
+    console.log(updateItem);
     const userID = req.params.uid;
+    console.log(userID);
 
     const status = await userDao.unadoptedItemSeller(userID, updateItem);
 
