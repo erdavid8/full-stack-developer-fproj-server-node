@@ -22,7 +22,7 @@ const userController = (app) => {
     app.delete('/api/user-admin/:uid', deleteProfileAdmin);
     app.delete('/api/user-buyer/:uid', deleteProfileBuyer);
     app.delete('/api/user-seller/:uid', deleteProfileSeller);
-    app.put('/api/user/:uid', addlikedItem);
+    app.put('/api/user-seller/:uid', addlikedItem);
 }
 
 
