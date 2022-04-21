@@ -25,7 +25,7 @@ const userController = (app) => {
     app.put('/api/seller-addlike/:uid', addlikedItemSeller);
     app.put('/api/seller-removelike/:uid', removelikedItemSeller);
     app.put('/api/seller-adopt/:uid', adoptedItemsSeller);
-    app.put('/api/seller-unadopt/:uid', removelikedItemSeller);
+    app.put('/api/seller-unadopt/:uid', unadoptedItemSeller);
     app.put('/api/seller-follow/:uid', followSeller);
     app.put('/api/seller-unfollow/:uid', unfollowSeller);
 }
