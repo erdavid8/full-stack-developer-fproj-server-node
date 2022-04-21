@@ -22,8 +22,8 @@ const findProfileByIdSeller = (id) => userSellerModel.findById(id);
 const findProfileByEmailSeller = (email) => userSellerModel.findOne({email});
 const createProfileSeller = (user) => userSellerModel.insertMany(user);
 const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
-const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$push: {likedItems: item}})
-const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {likedItems: item}})
+const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})
+const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
