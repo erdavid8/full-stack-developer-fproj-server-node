@@ -5,6 +5,7 @@ import petDao from "./dbase/pets/pet-dao.js";
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
     app.get('/api/pet/:uid', findPetById);
+    app.get('/api/pet/:name', findPetByName);
     app.get('/api/pet', findAllPet);
     app.delete('/api/pet/:uid', deletePet);
 //  app.put('/api/pet/:uid', updateProfile);
@@ -27,6 +28,18 @@ const findAllPet = async (req, res) => {
 const findPetById = async (req, res) => {
     const petId = req.params.uid;
     const pet = await petDao.findPetByID(petId);
+
+    if (pet) {
+        res.json(pet);                                     // pet is in database
+    } else {
+        res.sendStatus(404);                                // pet not found
+    }
+}
+
+// find pet by name
+const findPetByName = async (req, res) => {
+    const petName = req.params.name;
+    const pet = await petDao.findPetByName(petName);
 
     if (pet) {
         res.json(pet);                                     // pet is in database
