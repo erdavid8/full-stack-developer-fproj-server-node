@@ -5,7 +5,7 @@ import petDao from "./dbase/pets/pet-dao.js";
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
 //    app.get('/api/pet/:uid', findPetById);
-    app.get('/api/pet/:name', findPetById);
+    app.get('/api/pet/:name', findPetByName);
     app.get('/api/pet', findAllPet);
     app.delete('/api/pet/:uid', deletePet);
 //  app.put('/api/pet/:uid', updateProfile);
