@@ -183,7 +183,7 @@ const updateProfile = (req, res) => {
 
 const addlikedItem = async (req, res) => {
     //const item = req.body
-    const updateItem = req.headers.key;
+    const updateItem = req.headers;
     console.log(updateItem);
     const userID = req.params.uid;
     console.log(userID);
