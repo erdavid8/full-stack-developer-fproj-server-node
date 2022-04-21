@@ -15,6 +15,10 @@ const findProfileByIdBuyer = (id) => userBuyerModel.findById(id);
 const findProfileByEmailBuyer = (email) => userBuyerModel.findOne({email});
 const createProfileBuyer = (user) => userBuyerModel.insertMany(user);
 const deleteProfileBuyer = (id) => userBuyerModel.deleteOne({_id: id})
+const addlikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})
+const removelikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {likedItems: item}})
+const addPostedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {postedItems: item}})
+const removePostedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {postedItems: item}})
 
 // seller DAO
 const findAllProfileSeller = () => userSellerModel.find();
@@ -23,10 +27,15 @@ const findProfileByEmailSeller = (email) => userSellerModel.findOne({email});
 const createProfileSeller = (user) => userSellerModel.insertMany(user);
 const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
 const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})
-const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})
+const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {likedItems: item}})
+const adoptedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {adoptedItems: item}})
+const unadoptedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {adoptedItems: item}})
+const followSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {following: item}})
+const unfollowSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {following: item}})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
-    createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, findAllProfileSeller,
-    findProfileByIdSeller, findProfileByEmailSeller, createProfileSeller, deleteProfileSeller,
-    addlikedItemSeller, removelikedItemSeller };
+    createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
+    addPostedItemBuyer, removePostedItemBuyer, findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller,
+    createProfileSeller, deleteProfileSeller, addlikedItemSeller, removelikedItemSeller, adoptedItemsSeller,
+    unadoptedItemSeller, followSeller, unfollowSeller };

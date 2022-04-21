@@ -7,7 +7,6 @@ const userSellerSchema = mongoose.Schema({
     phone: String,
     type: String,
     likedItems: [String],
-    postedItems: [String],
     adoptedItems: [String],
     following: [String]
 }, {collection: 'users-seller'});
