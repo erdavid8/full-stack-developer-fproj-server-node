@@ -2,6 +2,10 @@ import pets from "./users/pet.js";
 import users from "./users/users.js";
 import petDao from "./dbase/pets/pet-dao.js";
 
+import { ObjectID } from 'bson';
+
+{ _id: new ObjectID().toHexString() }
+
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
     app.get('/api/pet/:uid', findPetById);
