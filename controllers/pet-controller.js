@@ -2,15 +2,13 @@ import pets from "./users/pet.js";
 import users from "./users/users.js";
 import petDao from "./dbase/pets/pet-dao.js";
 
-import mongoose from 'mongoose';
-mongoose.Types.ObjectId.isValid('name');
-
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
 //    app.get('/api/pet/:uid', findPetById);
-    app.get('/api/pet/:name', findPetByName);
+
     app.get('/api/pet', findAllPet);
     app.delete('/api/pet/:uid', deletePet);
+    app.get('/api/pet/:name', findPetByName);
 //  app.put('/api/pet/:uid', updateProfile);
 }
 
