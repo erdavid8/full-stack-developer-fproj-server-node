@@ -42,7 +42,6 @@ const findPetByName = async (req, res) => {
     console.log(petName);
     console.log("IAM HERE")
     const pet = await petDao.findPetByName(petName);
-    console.log(pet);
 
     if (pet) {
         res.json(pet);                                     // pet is in database
