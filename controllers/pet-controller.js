@@ -2,6 +2,9 @@ import pets from "./users/pet.js";
 import users from "./users/users.js";
 import petDao from "./dbase/pets/pet-dao.js";
 
+let mongoose = require('mongoose');
+mongoose.Types.ObjectId.isValid('name');
+
 const petController = (app) => {
     app.post('/api/pet', createPetProfile);
 //    app.get('/api/pet/:uid', findPetById);
