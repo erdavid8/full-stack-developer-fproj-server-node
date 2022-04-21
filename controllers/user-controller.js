@@ -178,7 +178,9 @@ const addlikedItemSeller = async (req, res) => {
 // remove liked item seller
 const removelikedItemSeller = async (req, res) => {
     const updateItem = req.body['likedItems'];
+    console.log(updateItem);
     const userID = req.params.uid;
+    console.log(userID);
 
     const status = await userDao.removelikedItemSeller(userID, updateItem);
 
