@@ -22,7 +22,8 @@ const userController = (app) => {
     app.delete('/api/user-admin/:uid', deleteProfileAdmin);
     app.delete('/api/user-buyer/:uid', deleteProfileBuyer);
     app.delete('/api/user-seller/:uid', deleteProfileSeller);
-    app.put('/api/user-seller/:uid', addlikedItem);
+    app.put('/api/user-seller/:uid', addlikedItemSeller);
+    app.put('/api/user-seller/:uid', removelikedItemSeller);
 }
 
 
@@ -164,31 +165,22 @@ const deleteProfileSeller = async (req, res) => {
     res.json(userDel);
 }
 
-/*
-// do not use for now - not updated
-const updateProfile = (req, res) => {
-    const userId = req.params.uid;
-    console.log(userId);
-    const user = users.find(u => u._id === userId);                     // get the object with specific _id
-    const updatedUser = req.body;                                        // new updated user embedded in HTTP request body
-    updatedUser.username = "Michael";
-    updatedUser.office = "LV426";
-    console.log(user);
-    console.log(updatedUser);
-    //users = users.map(u => u._id === userId? updateUser : u);
-    Object.assign(user, updatedUser);                                    // assign new values to existing
-    res.sendStatus(200);
-}
-*/
-
-const addlikedItem = async (req, res) => {
-    //const item = req.body
+// add liked item seller
+const addlikedItemSeller = async (req, res) => {
     const updateItem = req.body['likedItems'];
-    console.log(updateItem);
     const userID = req.params.uid;
-    console.log(userID);
 
-    const status = await userDao.addlikedItem(userID, updateItem);
+    const status = await userDao.addlikedItemSeller(userID, updateItem);
+
+    res.json(status);
+}
+
+// remove liked item seller
+const removelikedItemSeller = async (req, res) => {
+    const updateItem = req.body['likedItems'];
+    const userID = req.params.uid;
+
+    const status = await userDao.removelikedItemSeller(userID, updateItem);
 
     res.json(status);
 }
