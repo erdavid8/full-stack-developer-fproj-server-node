@@ -29,7 +29,7 @@ const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
 const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})
 const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {likedItems: item}})
 const adoptedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {adoptedItems: item}})
-const unadoptedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {adoptedItems: item}})
+const unadoptedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {adoptedItems: item}})
 const followSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {following: item}})
 const unfollowSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pull: {following: item}})
 
