@@ -38,8 +38,9 @@ const findPetById = async (req, res) => {
 
 // find pet by name
 const findPetByName = async (req, res) => {
-    const petName = req.params.name;
+    const petName = req.params['name'];
     console.log(petName);
+    console.log("IAM HERE")
     const pet = await petDao.findPetByName(petName);
     console.log(pet);
 
