@@ -8,7 +8,6 @@ const findProfileByIdAdmin = (id) => userAdminModel.findById(id);
 const findProfileByEmailAdmin = (email) => userAdminModel.findOne({email});
 const createProfileAdmin = (user) => userAdminModel.insertMany(user);
 const deleteProfileAdmin = (id) => userAdminModel.deleteOne({_id: id})
-const addlikedItem = (id, item) => userAdminModel.updateOne({_id: id}, {$set: {_id: item}})
 
 // buyer DAO
 const findAllProfileBuyer = () => userBuyerModel.find();
@@ -23,6 +22,7 @@ const findProfileByIdSeller = (id) => userSellerModel.findById(id);
 const findProfileByEmailSeller = (email) => userSellerModel.findOne({email});
 const createProfileSeller = (user) => userSellerModel.insertMany(user);
 const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
+const addlikedItem = (id, item) => userAdminModel.updateOne({_id: id}, {$push: {likedItems: item}})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
