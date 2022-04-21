@@ -41,14 +41,14 @@ const findPetByName = async (req, res) => {
     const petName = req.params['name'];
     console.log(petName);
     console.log("IAM HERE")
-/*    const pet = await petDao.findPetByName(petName);
+    const pet = await petDao.findPetByName(petName);
     console.log(pet);
 
     if (pet) {
         res.json(pet);                                     // pet is in database
     } else {
         res.sendStatus(404);                                // pet not found
-    }*/
+    }
 }
 
 // delete pet profile
