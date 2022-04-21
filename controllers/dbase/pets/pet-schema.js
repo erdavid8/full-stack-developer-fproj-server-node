@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const petSchema = mongoose.Schema({
-    _id: String,
+    _id: Object,
     name: String,
     age: String,
     gender: String,
