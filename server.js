@@ -11,7 +11,7 @@ const app = express();
 app.get('/hello', (req, res) => {res.send('Life is good!')});
 app.get('/', (req, res) => {res.send('Welcome to Full Stack Development! Final Project')});
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin: '*'}));
 userController(app);
 petController(app);
 app.listen(process.env.PORT || 4000);
