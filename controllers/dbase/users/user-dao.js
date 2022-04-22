@@ -28,14 +28,14 @@ const createProfileSeller = (user) => userSellerModel.insertMany(user);
 const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
 const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})
 const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})
-const adoptedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {adoptedItems: item}})
-const unadoptedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {adoptedItems: item}})
-const followSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {following: item}})
-const unfollowSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {following: item}})
+const postedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {postedItems: item}})
+const unpostedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {postedItems: item}})
+//const followSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {following: item}})
+//const unfollowSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {following: item}})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
     createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
     addPostedItemBuyer, removePostedItemBuyer, findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller,
-    createProfileSeller, deleteProfileSeller, addlikedItemSeller, removelikedItemSeller, adoptedItemsSeller,
-    unadoptedItemSeller, followSeller, unfollowSeller };
+    createProfileSeller, deleteProfileSeller, addlikedItemSeller, removelikedItemSeller, postedItemsSeller,
+    unpostedItemSeller };

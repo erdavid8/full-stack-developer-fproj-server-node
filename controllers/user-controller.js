@@ -24,10 +24,10 @@ const userController = (app) => {
     app.delete('/api/user-seller/:uid', deleteProfileSeller);
     app.put('/api/seller-addlike/:uid', addlikedItemSeller);
     app.put('/api/seller-removelike/:uid', removelikedItemSeller);
-    app.put('/api/seller-adopt/:uid', adoptedItemsSeller);
-    app.put('/api/seller-unadopt/:uid', unadoptedItemSeller);
-    app.put('/api/seller-follow/:uid', followSeller);
-    app.put('/api/seller-unfollow/:uid', unfollowSeller);
+    app.put('/api/seller-posted/:uid', postedItemsSeller);
+    app.put('/api/seller-unposted/:uid', unpostedItemSeller);
+//    app.put('/api/seller-follow/:uid', followSeller);
+//    app.put('/api/seller-unfollow/:uid', unfollowSeller);
 }
 
 
@@ -190,21 +190,21 @@ const removelikedItemSeller = async (req, res) => {
 }
 
 // add adopted item seller
-const adoptedItemsSeller = async (req, res) => {
-    const updateItem = req.body['adoptedItems'];
+const postedItemsSeller = async (req, res) => {
+    const updateItem = req.body['postedItems'];
     const userID = req.params.uid;
 
-    const status = await userDao.adoptedItemsSeller(userID, updateItem);
+    const status = await userDao.postedItemsSeller(userID, updateItem);
 
     res.json(status);
 }
 
 // remove adopted item seller
-const unadoptedItemSeller = async (req, res) => {
-    const updateItem = req.body['adoptedItems'];
+const unpostedItemSeller = async (req, res) => {
+    const updateItem = req.body['postedItems'];
     const userID = req.params.uid;
 
-    const status = await userDao.unadoptedItemSeller(userID, updateItem);
+    const status = await userDao.unpostedItemSeller(userID, updateItem);
 
     res.json(status);
 }
