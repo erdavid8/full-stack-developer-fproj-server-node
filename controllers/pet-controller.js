@@ -26,14 +26,12 @@ const findAllPet = async (req, res) => {
 
 // find pet by ID
 const findPetById = async (req, res) => {
-    console.log("START");
+
     const petId = req.params.uid;
+    // console.log((new TextEncoder().encode(petId)).length);
 
-    console.log((new TextEncoder().encode(petId)).length);
-
-    if ((new TextEncoder().encode(petId)).length === 24) {
-        console.log("recieved 24");
-        return res.status(400).send({message: 'wrong ID bytes'});
+    if ((new TextEncoder().encode(petId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
     }
 
     const pet = await petDao.findPetByID(petId);
