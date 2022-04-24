@@ -33,7 +33,7 @@ const findPetById = async (req, res) => {
 
     if ((new TextEncoder().encode(petId)).length === 24) {
         console.log("recieved 24");
-        //res.sendStatus(404);
+        return res.status(400).send({message: 'wrong ID bytes'});
     }
 
     const pet = await petDao.findPetByID(petId);
