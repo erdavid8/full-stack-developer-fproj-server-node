@@ -29,7 +29,7 @@ const findPetById = async (req, res) => {
     console.log("START");
     const petId = req.params.uid;
 
-    console.log(petId);
+    console.log((new TextEncoder().encode(petId)).length);
 
     const pet = await petDao.findPetByID(petId);
 
