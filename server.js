@@ -12,6 +12,10 @@ app.get('/hello', (req, res) => {res.send('Life is good!')});
 app.get('/', (req, res) => {res.send('Welcome to Full Stack Development! Final Project')});
 app.use(express.json());
 app.use(cors({origin: '*'}));
+app.use(bodyParser.urlencoded({
+    extended:true,
+    limit: '50mb'
+}))
 userController(app);
 petController(app);
 app.listen(process.env.PORT || 4000);
