@@ -12,7 +12,8 @@ const petSchema = mongoose.Schema({
     url: String,
     contact: {
         email: String,
-        phone: String
+        phone: String,
+        userId: String
     }
 }, {collection: 'pets'});
 
