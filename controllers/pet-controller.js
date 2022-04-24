@@ -31,6 +31,10 @@ const findPetById = async (req, res) => {
 
     console.log((new TextEncoder().encode(petId)).length);
 
+    if ((new TextEncoder().encode(petId)).length === 24) {
+        res.sendStatus(404);
+    }
+
     const pet = await petDao.findPetByID(petId);
 
     if (pet) {
