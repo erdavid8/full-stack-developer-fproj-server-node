@@ -32,6 +32,7 @@ const findPetById = async (req, res) => {
     console.log((new TextEncoder().encode(petId)).length);
 
     if ((new TextEncoder().encode(petId)).length === 24) {
+        console.log("recieved 24");
         res.sendStatus(404);
     }
 
