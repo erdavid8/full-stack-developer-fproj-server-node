@@ -242,7 +242,9 @@ const unfollowSeller = async (req, res) => {
 // add liked item buyer
 const addlikedItemBuyer = async (req, res) => {
     const updateItem = req.body['likedItems'];
+    console.log(updateItem)
     const userID = req.params.uid;
+    console.log(userID)
 
     const status = await userDao.addlikedItemBuyer(userID, updateItem);
 
