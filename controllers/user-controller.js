@@ -32,7 +32,7 @@ const userController = (app) => {
     app.put('/api/seller-updateName/:uid', updateNameSeller);
     app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
     app.put('/api/seller-updatePassword/:uid', updatePasswordSeller);
-    app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
+    app.put('/api/seller-updatePhone/:uid', updatePhoneSeller);
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
