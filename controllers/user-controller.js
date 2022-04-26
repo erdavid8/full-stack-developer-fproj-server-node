@@ -342,9 +342,9 @@ const updatePhoneSeller = async (req, res) => {
 
     res.json(status);
 }
-a
+
 const updateUserSeller = async (rec, res) => {
-    //const replaceItem = req.body;
+    const replaceItem = req.body;
     console.log(replaceItem);
     const userID = req.params.uid
     console.log(userID);
