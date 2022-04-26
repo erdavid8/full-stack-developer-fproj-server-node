@@ -8,17 +8,22 @@ const findProfileByIdAdmin = (id) => userAdminModel.findById(id);
 const findProfileByEmailAdmin = (email) => userAdminModel.findOne({email});
 const createProfileAdmin = (user) => userAdminModel.insertMany(user);
 const deleteProfileAdmin = (id) => userAdminModel.deleteOne({_id: id})
-
-const updateUserAdmin = (id, replacement) => userAdminModel.updateOne({_id: id}, replacement)
-const updateUserSeller = (id, replacement) => userSellerModel.updateOne({_id: id}, replacement)
-const updateUserBuyer = (id, replacement) => userBuyerModel.updateOne({_id: id}, replacement)
-
 // buyer DAO
 const findAllProfileBuyer = () => userBuyerModel.find();
 const findProfileByIdBuyer = (id) => userBuyerModel.findById(id);
 const findProfileByEmailBuyer = (email) => userBuyerModel.findOne({email});
 const createProfileBuyer = (user) => userBuyerModel.insertMany(user);
 const deleteProfileBuyer = (id) => userBuyerModel.deleteOne({_id: id})
+// seller DAO
+const findAllProfileSeller = () => userSellerModel.find();
+const findProfileByIdSeller = (id) => userSellerModel.findById(id);
+const findProfileByEmailSeller = (email) => userSellerModel.findOne({email});
+const createProfileSeller = (user) => userSellerModel.insertMany(user);
+const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
+// update user
+const updateUserAdmin = (id, replacement) => userAdminModel.updateOne({_id: id}, replacement)
+const updateUserSeller = (id, replacement) => userSellerModel.updateOne({_id: id}, replacement)
+const updateUserBuyer = (id, replacement) => userBuyerModel.updateOne({_id: id}, replacement)
 /*
 const addlikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})        // add like
 const removelikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})      // remove like
@@ -27,13 +32,6 @@ const unadoptBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll
 const followBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {following: item}})               // follow
 const unfollowBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {following: item}})              // unfollow
 */
-
-// seller DAO
-const findAllProfileSeller = () => userSellerModel.find();
-const findProfileByIdSeller = (id) => userSellerModel.findById(id);
-const findProfileByEmailSeller = (email) => userSellerModel.findOne({email});
-const createProfileSeller = (user) => userSellerModel.insertMany(user);
-const deleteProfileSeller = (id) => userSellerModel.deleteOne({_id: id})
 /*
 const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})      // add like
 const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})    // remove like
