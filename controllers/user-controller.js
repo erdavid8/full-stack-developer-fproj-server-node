@@ -32,8 +32,8 @@ const userController = (app) => {
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
-    app.put('/api/buyer-addpost/:uid', addPostedItemBuyer);
-    app.put('/api/buyer-removepost/:uid', removePostedItemBuyer);
+    //app.put('/api/buyer-addpost/:uid', addPostedItemBuyer);
+    //app.put('/api/buyer-removepost/:uid', removePostedItemBuyer);
 
 
 }
