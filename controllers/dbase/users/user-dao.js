@@ -17,8 +17,8 @@ const createProfileBuyer = (user) => userBuyerModel.insertMany(user);
 const deleteProfileBuyer = (id) => userBuyerModel.deleteOne({_id: id})
 const addlikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})        // add like
 const removelikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})      // remove like
-const addPostedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {postedItems: item}})      // add post
-const removePostedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {postedItems: item}})       // remove post
+const adoptBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {adoptedItems: item}})      // add post
+const unadoptBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {adoptedItems: item}})       // remove post
 const followBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {following: item}})               // follow
 const unfollowBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {following: item}})              // unfollow
 
@@ -38,6 +38,6 @@ const unpostedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
     createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
-    addPostedItemBuyer, removePostedItemBuyer, findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller,
-    createProfileSeller, deleteProfileSeller, addlikedItemSeller, removelikedItemSeller, postedItemsSeller,
-    unpostedItemSeller, followBuyer, unfollowBuyer};
+    findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller, createProfileSeller, deleteProfileSeller,
+    addlikedItemSeller, removelikedItemSeller, postedItemsSeller, unpostedItemSeller, followBuyer, unfollowBuyer
+    adoptBuyer, unadoptBuyer};
