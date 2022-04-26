@@ -345,18 +345,15 @@ const updatePhoneSeller = async (req, res) => {
 
 const updateUserSeller = async (req, res) => {
     const replaceItem = req.body;
-    console.log(replaceItem);
     const userID = req.params.uid
-    console.log(userID);
 
     const  status = await userDao.updateUserSeller(userID, replaceItem);
-    console.log(status.modifiedCount);
-    res.json(status);
-
-
+    if (status.modifiedCount === 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
 
 }
-
-
 
 export default userController;
