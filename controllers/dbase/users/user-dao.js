@@ -34,10 +34,12 @@ const postedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$a
 const unpostedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {postedItems: item}})      // remove post
 const updateNameSeller = (id, new_name) => userSellerModel.findOneAndUpdate({_id: id}, {name: new_name})            // change seller name
 const updateEmailSeller = (id, new_email) => userSellerModel.findOneAndUpdate({_id: id}, {email: new_email})
+const updatePasswordSeller = (id, new_password) => userSellerModel.findOneAndUpdate({_id: id}, {password: new_password})
+const updatePhoneSeller = (id, new_phone) => userSellerModel.findOneAndUpdate({_id: id}, {phone: new_phone})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
     createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
     findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller, createProfileSeller, deleteProfileSeller,
     addlikedItemSeller, removelikedItemSeller, postedItemsSeller, unpostedItemSeller, followBuyer, unfollowBuyer,
-    adoptBuyer, unadoptBuyer, updateNameSeller, updateEmailSeller};
+    adoptBuyer, unadoptBuyer, updateNameSeller, updateEmailSeller, updatePasswordSeller, updatePhoneSeller};

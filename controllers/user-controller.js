@@ -24,12 +24,14 @@ const userController = (app) => {
     app.delete('/api/user-seller/:uid', deleteProfileSeller);
     // app.put('/api/seller-follow/:uid', followSeller);
     // app.put('/api/seller-unfollow/:uid', unfollowSeller);
-    // update-seller like & posted, name
+    // update-seller like & posted, name, password, phone
     app.put('/api/seller-addlike/:uid', addlikedItemSeller);
     app.put('/api/seller-removelike/:uid', removelikedItemSeller);
     app.put('/api/seller-posted/:uid', postedItemsSeller);
     app.put('/api/seller-unposted/:uid', unpostedItemSeller);
     app.put('/api/seller-updateName/:uid', updateNameSeller);
+    app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
+    app.put('/api/seller-updatePassword/:uid', updatePasswordSeller);
     app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
@@ -314,11 +316,29 @@ const updateNameSeller = async (req, res) => {
 // update email seller
 const updateEmailSeller = async (req, res) => {
     const updateEmail = req.body['email'];
-    console.log(updateEmail)
     const userID = req.params.uid;
-    console.log(userID)
 
     const status = await userDao.updateEmailSeller(userID, updateEmail);
+
+    res.json(status);
+}
+
+// update password seller
+const updatePasswordSeller = async (req, res) => {
+    const updatePassword = req.body['password'];
+    const userID = req.params.uid;
+
+    const status = await userDao.updatePasswordSeller(userID, updatePassword);
+
+    res.json(status);
+}
+
+// update phone seller
+const updatePhoneSeller = async (req, res) => {
+    const updatePhone = req.body['phone'];
+    const userID = req.params.uid;
+
+    const status = await userDao.updatePhoneSeller(userID, updatePhone);
 
     res.json(status);
 }
