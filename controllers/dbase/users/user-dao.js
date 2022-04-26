@@ -16,7 +16,7 @@ const findProfileByEmailBuyer = (email) => userBuyerModel.findOne({email});
 const createProfileBuyer = (user) => userBuyerModel.insertMany(user);
 const deleteProfileBuyer = (id) => userBuyerModel.deleteOne({_id: id})
 const addlikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})        // add like
-const removelikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {likedItems: item}})         // remove like
+const removelikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})      // remove like
 const addPostedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {postedItems: item}})      // add post
 const removePostedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {postedItems: item}})       // remove post
 const followBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {following: item}})               // follow
