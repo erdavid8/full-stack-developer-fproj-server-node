@@ -9,9 +9,8 @@ const findProfileByEmailAdmin = (email) => userAdminModel.findOne({email});
 const createProfileAdmin = (user) => userAdminModel.insertMany(user);
 const deleteProfileAdmin = (id) => userAdminModel.deleteOne({_id: id})
 
-const option = {"returnNewDocument": true}
 // const updateUserAdmin = (id) => userAdminModel.replaceOne({_id: id}, )
-const updateUserSeller = (id, replacement) => userSellerModel.findOneAndReplace({_id: id}, replacement, option)
+const updateUserSeller = (id, replacement) => userSellerModel.updateOne({_id: id}, replacement)
 
 // buyer DAO
 const findAllProfileBuyer = () => userBuyerModel.find();

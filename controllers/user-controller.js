@@ -342,7 +342,7 @@ const updatePhoneSeller = async (req, res) => {
 
     res.json(status);
 }
-
+a
 const updateUserSeller = async (rec, res) => {
     const replaceItem = req.body;
     console.log(replaceItem);
