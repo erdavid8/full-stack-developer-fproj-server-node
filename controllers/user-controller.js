@@ -34,6 +34,7 @@ const userController = (app) => {
     app.put('/api/seller-updatePassword/:uid', updatePasswordSeller);
     app.put('/api/seller-updatePhone/:uid', updatePhoneSeller);
     app.put('/api/seller-updateReplace/:uid', updateUserSeller);
+    app.put('/api/admin-updateReplace/:uid', updateUserAdmin);
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
@@ -41,9 +42,8 @@ const userController = (app) => {
     app.put('/api/buyer-unadopt/:uid', unadoptBuyer);
     app.put('/api/buyer-follow/:uid', followBuyer);
     app.put('/api/buyer-unfollow/:uid', unfollowBuyer);
-
+    app.put('/api/buyer-updateReplace/:uid', updateUserBuyer);
 }
-
 
 // create new profile(somewhat same as signup) admin
 const createProfileAdmin = async (req, res) => {
@@ -343,16 +343,44 @@ const updatePhoneSeller = async (req, res) => {
     res.json(status);
 }
 
-const updateUserSeller = async (req, res) => {
+// update user admin
+const updateUserAdmin = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
 
-    const  status = await userDao.updateUserSeller(userID, replaceItem);
+    const status = await userDao.updateUserAdmin(userID, replaceItem);
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
     } else {
         res.sendStatus(404);
     }
+}
+
+// update user seller
+const updateUserSeller = async (req, res) => {
+    const replaceItem = req.body;
+    const userID = req.params.uid
+
+    const status = await userDao.updateUserSeller(userID, replaceItem);
+    if (status.modifiedCount === 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
+}
+
+// update user buyer
+    const updateUserBuyer = async (req, res) => {
+        const replaceItem = req.body;
+        const userID = req.params.uid
+
+        const  status = await userDao.updateUserBuyer(userID, replaceItem);
+
+        if (status.modifiedCount === 1) {
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
+        }
 
 }
 
