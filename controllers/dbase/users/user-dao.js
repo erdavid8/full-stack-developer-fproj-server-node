@@ -40,4 +40,4 @@ export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdm
     createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
     addPostedItemBuyer, removePostedItemBuyer, findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller,
     createProfileSeller, deleteProfileSeller, addlikedItemSeller, removelikedItemSeller, postedItemsSeller,
-    unpostedItemSeller };
+    unpostedItemSeller, followBuyer, unfollowBuyer};

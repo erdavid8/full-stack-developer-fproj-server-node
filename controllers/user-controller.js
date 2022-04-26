@@ -32,6 +32,8 @@ const userController = (app) => {
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
+    app.put('/api/buyer-posted/:uid', addPostedItemBuyer);
+    app.put('/api/buyer-unposted/:uid', removePostedItemBuyer);
     //app.put('/api/buyer-addpost/:uid', addPostedItemBuyer);
     //app.put('/api/buyer-removepost/:uid', removePostedItemBuyer);
 
@@ -253,6 +255,26 @@ const removelikedItemBuyer = async (req, res) => {
     const userID = req.params.uid;
 
     const status = await userDao.removelikedItemBuyer(userID, updateItem);
+
+    res.json(status);
+}
+
+// add adopted item buyer
+const addPostedItemBuyer = async (req, res) => {
+    const updateItem = req.body['postedItems'];
+    const userID = req.params.uid;
+
+    const status = await userDao.addPostedItemBuyer(userID, updateItem);
+
+    res.json(status);
+}
+
+// remove adopted item buyer
+const removePostedItemBuyer = async (req, res) => {
+    const updateItem = req.body['postedItems'];
+    const userID = req.params.uid;
+
+    const status = await userDao.removePostedItemBuyer(userID, updateItem);
 
     res.json(status);
 }
