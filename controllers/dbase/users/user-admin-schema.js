@@ -6,6 +6,7 @@ const userAdminSchema = mongoose.Schema({
     password: String,
     phone: String,
     type: String,
+    photo: String
 }, {collection: 'users-admin'});
 
 export default userAdminSchema;

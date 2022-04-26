@@ -8,7 +8,8 @@ const userBuyerSchema = mongoose.Schema({
     type: String,
     likedItems: [String],
     adoptedItems: [String],
-    following: [String]
+    following: [String],
+    photo: String
 }, {collection: 'users-buyer'});
 
 export default userBuyerSchema;
