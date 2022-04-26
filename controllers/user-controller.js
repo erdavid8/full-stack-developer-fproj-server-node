@@ -242,9 +242,7 @@ const unfollowSeller = async (req, res) => {
 // add liked item buyer
 const addlikedItemBuyer = async (req, res) => {
     const updateItem = req.body['likedItems'];
-    console.log(updateItem)
     const userID = req.params.uid;
-    console.log(userID)
 
     const status = await userDao.addlikedItemBuyer(userID, updateItem);
 
@@ -254,9 +252,7 @@ const addlikedItemBuyer = async (req, res) => {
 // remove liked item buyer
 const removelikedItemBuyer = async (req, res) => {
     const updateItem = req.body['likedItems'];
-    console.log(updateItem)
     const userID = req.params.uid;
-    console.log(userID)
 
     const status = await userDao.removelikedItemBuyer(userID, updateItem);
 
@@ -266,7 +262,9 @@ const removelikedItemBuyer = async (req, res) => {
 // add adopted item buyer
 const addPostedItemBuyer = async (req, res) => {
     const updateItem = req.body['postedItems'];
+    console.log(updateItem)
     const userID = req.params.uid;
+    console.log(userID)
 
     const status = await userDao.addPostedItemBuyer(userID, updateItem);
 
@@ -276,7 +274,9 @@ const addPostedItemBuyer = async (req, res) => {
 // remove adopted item buyer
 const removePostedItemBuyer = async (req, res) => {
     const updateItem = req.body['postedItems'];
+    console.log(updateItem)
     const userID = req.params.uid;
+    console.log(userID)
 
     const status = await userDao.removePostedItemBuyer(userID, updateItem);
 
