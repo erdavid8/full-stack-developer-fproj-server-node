@@ -32,12 +32,11 @@ const addlikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$
 const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})    // remove like
 const postedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {postedItems: item}})      // add post
 const unpostedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {postedItems: item}})      // remove post
-//const followSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {following: item}})
-//const unfollowSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {following: item}})
+const updateNameSeller = (id, new_name) => userSellerModel.findOneAndUpdate({_id: id}, {$addToSet: {name: new_name}})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
     createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
     findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller, createProfileSeller, deleteProfileSeller,
     addlikedItemSeller, removelikedItemSeller, postedItemsSeller, unpostedItemSeller, followBuyer, unfollowBuyer,
-    adoptBuyer, unadoptBuyer};
+    adoptBuyer, unadoptBuyer, updateNameSeller};

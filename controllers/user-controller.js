@@ -24,11 +24,12 @@ const userController = (app) => {
     app.delete('/api/user-seller/:uid', deleteProfileSeller);
     // app.put('/api/seller-follow/:uid', followSeller);
     // app.put('/api/seller-unfollow/:uid', unfollowSeller);
-    // update-seller like & posted
+    // update-seller like & posted, name
     app.put('/api/seller-addlike/:uid', addlikedItemSeller);
     app.put('/api/seller-removelike/:uid', removelikedItemSeller);
     app.put('/api/seller-posted/:uid', postedItemsSeller);
     app.put('/api/seller-unposted/:uid', unpostedItemSeller);
+    app.put('/api/seller-updateName/:uid', updateNameSeller);
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
@@ -36,6 +37,7 @@ const userController = (app) => {
     app.put('/api/buyer-unadopt/:uid', unadoptBuyer);
     app.put('/api/buyer-follow/:uid', followBuyer);
     app.put('/api/buyer-unfollow/:uid', unfollowBuyer);
+
 
 }
 
@@ -294,6 +296,18 @@ const unfollowBuyer = async (req, res) => {
     const userID = req.params.uid;
 
     const status = await userDao.unfollowBuyer(userID, updateItem);
+
+    res.json(status);
+}
+
+// update name seller
+const updateNameSeller = async (req, res) => {
+    const updateName = req.body['name'];
+    console.log(updateName)
+    const userID = req.params.uid;
+    console.log(userID)
+
+    const status = await userDao.updateNameSeller(userID, updateName);
 
     res.json(status);
 }
