@@ -18,7 +18,7 @@ const deleteProfileBuyer = (id) => userBuyerModel.deleteOne({_id: id})
 const addlikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {likedItems: item}})        // add like
 const removelikedItemBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {likedItems: item}})      // remove like
 const adoptBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {adoptedItems: item}})      // add post
-const unadoptBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pull: {adoptedItems: item}})       // remove post
+const unadoptBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {adoptedItems: item}})       // remove post
 const followBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$addToSet: {following: item}})               // follow
 const unfollowBuyer = (id, item) => userBuyerModel.updateOne({_id: id}, {$pullAll: {following: item}})              // unfollow
 
