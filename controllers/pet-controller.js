@@ -8,7 +8,6 @@ const petController = (app) => {
     app.get('/api/pet-name/:name', findPetByName);
     app.get('/api/pet', findAllPet);
     app.delete('/api/pet/:uid', deletePet);
-//  app.put('/api/pet/:uid', updateProfile);
 }
 
 // create new pet profile
@@ -28,7 +27,6 @@ const findAllPet = async (req, res) => {
 const findPetById = async (req, res) => {
 
     const petId = req.params.uid;
-    // console.log((new TextEncoder().encode(petId)).length);
 
     if ((new TextEncoder().encode(petId)).length !== 24) {
         return res.status(400).send({message: 'wrong number of ID characters'});
@@ -58,9 +56,18 @@ const findPetByName = async (req, res) => {
 // delete pet profile
 const deletePet = async (req, res) => {
     const petId = req.params.uid;
+
+    if ((new TextEncoder().encode(petId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const petDel = await petDao.deletePet(petId);
 
-    res.json(petDel);
+    if (petDel.deletedCount === 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
 }
 
 export default petController;

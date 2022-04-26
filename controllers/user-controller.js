@@ -63,6 +63,11 @@ const findAllProfileAdmin = async (req, res) => {
 // find user admin using ID
 const findProfileByIdAdmin = async (req, res) => {
     const userId = req.params.uid;
+
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const user = await userDao.findProfileByIdAdmin(userId);
 
     if (user) {
@@ -95,6 +100,11 @@ const createProfileAdmin = async (req, res) => {
 // delete profile admin
 const deleteProfileAdmin = async (req, res) => {
     const userId = req.params.uid;
+
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const userDel = await userDao.deleteProfileAdmin(userId);
 
     if (userDel.deletedCount === 1) {
@@ -115,6 +125,11 @@ const findAllProfileBuyer = async (req, res) => {
 // find user buyer using ID
 const findProfileByIdBuyer = async (req, res) => {
     const userId = req.params.uid;
+
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const user = await userDao.findProfileByIdBuyer(userId);
 
     if (user) {
@@ -147,6 +162,11 @@ const createProfileBuyer = async (req, res) => {
 // delete profile buyer
 const deleteProfileBuyer = async (req, res) => {
     const userId = req.params.uid;
+
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const userDel = await userDao.deleteProfileBuyer(userId);
 
     if (userDel.deletedCount === 1) {
@@ -167,6 +187,11 @@ const findAllProfileSeller = async (req, res) => {
 // find user seller using ID
 const findProfileByIdSeller = async (req, res) => {
     const userId = req.params.uid;
+
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const user = await userDao.findProfileByIdSeller(userId);
 
     if (user) {
@@ -215,6 +240,10 @@ const updateUserAdmin = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
 
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const status = await userDao.updateUserAdmin(userID, replaceItem);
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
@@ -228,6 +257,10 @@ const updateUserSeller = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
 
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
+
     const status = await userDao.updateUserSeller(userID, replaceItem);
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
@@ -240,6 +273,10 @@ const updateUserSeller = async (req, res) => {
 const updateUserBuyer = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
+
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
 
     const  status = await userDao.updateUserBuyer(userID, replaceItem);
 
