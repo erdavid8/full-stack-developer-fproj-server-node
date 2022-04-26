@@ -1,4 +1,3 @@
-// import users from "./users/users.js";
 import userDao from '../controllers/dbase/users/user-dao.js';
 
 const userController = (app) => {
@@ -22,6 +21,11 @@ const userController = (app) => {
     app.delete('/api/user-admin/:uid', deleteProfileAdmin);
     app.delete('/api/user-buyer/:uid', deleteProfileBuyer);
     app.delete('/api/user-seller/:uid', deleteProfileSeller);
+    // update users
+    app.put('/api/user-admin/:uid', updateUserAdmin);
+    app.put('/api/user-buyer/:uid', updateUserBuyer);
+    app.put('/api/user-seller/:uid', updateUserSeller);
+
     // app.put('/api/seller-follow/:uid', followSeller);
     // app.put('/api/seller-unfollow/:uid', unfollowSeller);
     // update-seller like & posted, name, password, phone
@@ -34,9 +38,6 @@ const userController = (app) => {
     app.put('/api/seller-updatePassword/:uid', updatePasswordSeller);
     app.put('/api/seller-updatePhone/:uid', updatePhoneSeller);
  */
-    app.put('/api/user-admin/:uid', updateUserAdmin);
-    app.put('/api/user-buyer/:uid', updateUserBuyer);
-    app.put('/api/user-seller/:uid', updateUserSeller);
 
 //    app.put('/api/seller-updateReplace/:uid', updateUserSeller);
 //    app.put('/api/admin-updateReplace/:uid', updateUserAdmin);

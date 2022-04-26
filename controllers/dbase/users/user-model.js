@@ -7,4 +7,4 @@ const userAdminModel = mongoose.model('UsersAdminModel', userAdminSchema);
 const userBuyerModel = mongoose.model('UsersBuyerModel', userBuyerSchema);
 const userSellerModel = mongoose.model('UsersModel', userSellerSchema);
 
-export default {userSellerModel};
+export default {};
