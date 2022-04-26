@@ -351,7 +351,7 @@ const updateUserSeller = async (req, res) => {
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
     } else {
-        res.sendStatus(404);
+        res.sendStatus(304);
     }
 
 }
