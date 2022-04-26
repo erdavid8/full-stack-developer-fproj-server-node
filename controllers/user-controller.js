@@ -97,7 +97,11 @@ const deleteProfileAdmin = async (req, res) => {
     const userId = req.params.uid;
     const userDel = await userDao.deleteProfileAdmin(userId);
 
-    res.send(userDel);
+    if (userDel.deletedCount === 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
 }
 
 // BUYER:
@@ -145,7 +149,11 @@ const deleteProfileBuyer = async (req, res) => {
     const userId = req.params.uid;
     const userDel = await userDao.deleteProfileBuyer(userId);
 
-    res.send(userDel);
+    if (userDel.deletedCount === 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
 }
 
 // SELLER:
@@ -193,8 +201,14 @@ const deleteProfileSeller = async (req, res) => {
     const userId = req.params.uid;
     const userDel = await userDao.deleteProfileSeller(userId);
 
-    res.send(userDel);
+    if (userDel.deletedCount === 1) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(404);
+    }
 }
+
+// OTHERS:
 
 // update user admin
 const updateUserAdmin = async (req, res) => {
