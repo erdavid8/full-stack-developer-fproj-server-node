@@ -242,7 +242,7 @@ const addlikedItemBuyer = async (req, res) => {
     const updateItem = req.body['likedItems'];
     const userID = req.params.uid;
 
-    const status = await userDao.addPostedItemBuyer(userID, updateItem);
+    const status = await userDao.addlikedItemBuyer(userID, updateItem);
 
     res.json(status);
 }
@@ -252,7 +252,7 @@ const removelikedItemBuyer = async (req, res) => {
     const updateItem = req.body['likedItems'];
     const userID = req.params.uid;
 
-    const status = await userDao.removelikedItemSeller(userID, updateItem);
+    const status = await userDao.removelikedItemBuyer(userID, updateItem);
 
     res.json(status);
 }
