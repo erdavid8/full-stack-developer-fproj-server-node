@@ -30,6 +30,7 @@ const userController = (app) => {
     app.put('/api/seller-posted/:uid', postedItemsSeller);
     app.put('/api/seller-unposted/:uid', unpostedItemSeller);
     app.put('/api/seller-updateName/:uid', updateNameSeller);
+    app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
@@ -312,12 +313,12 @@ const updateNameSeller = async (req, res) => {
 
 // update email seller
 const updateEmailSeller = async (req, res) => {
-    const updateName = req.body['name'];
-    console.log(updateName)
+    const updateEmail = req.body['email'];
+    console.log(updateEmail)
     const userID = req.params.uid;
     console.log(userID)
 
-    const status = await userDao.updateEmailSeller(userID, updateName);
+    const status = await userDao.updateEmailSeller(userID, updateEmail);
 
     res.json(status);
 }

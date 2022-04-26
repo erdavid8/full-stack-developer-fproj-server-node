@@ -33,7 +33,7 @@ const removelikedItemSeller = (id, item) => userSellerModel.updateOne({_id: id},
 const postedItemsSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$addToSet: {postedItems: item}})      // add post
 const unpostedItemSeller = (id, item) => userSellerModel.updateOne({_id: id}, {$pullAll: {postedItems: item}})      // remove post
 const updateNameSeller = (id, new_name) => userSellerModel.findOneAndUpdate({_id: id}, {name: new_name})            // change seller name
-const updateEmailSeller = (id, new_email) => userSellerModel.findOneAndUpdate({_id: id}, {name: new_email})
+const updateEmailSeller = (id, new_email) => userSellerModel.findOneAndUpdate({_id: id}, {email: new_email})
 
 export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdmin,
     createProfileAdmin, deleteProfileAdmin, findAllProfileBuyer, findProfileByIdBuyer,
