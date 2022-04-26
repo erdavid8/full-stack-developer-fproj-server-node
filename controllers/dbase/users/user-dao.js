@@ -9,6 +9,10 @@ const findProfileByEmailAdmin = (email) => userAdminModel.findOne({email});
 const createProfileAdmin = (user) => userAdminModel.insertMany(user);
 const deleteProfileAdmin = (id) => userAdminModel.deleteOne({_id: id})
 
+const option = {"returnNewDocument": true}
+// const updateUserAdmin = (id) => userAdminModel.replaceOne({_id: id}, )
+const updateUserSeller = (id, replacement) => userSellerModel.findOneAndReplace({_id: id}, replacement, option)
+
 // buyer DAO
 const findAllProfileBuyer = () => userBuyerModel.find();
 const findProfileByIdBuyer = (id) => userBuyerModel.findById(id);
@@ -42,4 +46,5 @@ export default {findAllProfileAdmin, findProfileByIdAdmin, findProfileByEmailAdm
     createProfileBuyer, findProfileByEmailBuyer, deleteProfileBuyer, addlikedItemBuyer, removelikedItemBuyer,
     findAllProfileSeller, findProfileByIdSeller, findProfileByEmailSeller, createProfileSeller, deleteProfileSeller,
     addlikedItemSeller, removelikedItemSeller, postedItemsSeller, unpostedItemSeller, followBuyer, unfollowBuyer,
-    adoptBuyer, unadoptBuyer, updateNameSeller, updateEmailSeller, updatePasswordSeller, updatePhoneSeller};
+    adoptBuyer, unadoptBuyer, updateNameSeller, updateEmailSeller, updatePasswordSeller, updatePhoneSeller,
+    updateUserSeller};

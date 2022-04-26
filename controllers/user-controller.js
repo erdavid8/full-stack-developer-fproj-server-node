@@ -33,6 +33,7 @@ const userController = (app) => {
     app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
     app.put('/api/seller-updatePassword/:uid', updatePasswordSeller);
     app.put('/api/seller-updatePhone/:uid', updatePhoneSeller);
+    app.put('/api/seller-updateReplace/:uid', updateUserSeller);
     // update-buyer like, adopted, follow
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
@@ -40,7 +41,6 @@ const userController = (app) => {
     app.put('/api/buyer-unadopt/:uid', unadoptBuyer);
     app.put('/api/buyer-follow/:uid', followBuyer);
     app.put('/api/buyer-unfollow/:uid', unfollowBuyer);
-
 
 }
 
@@ -342,5 +342,19 @@ const updatePhoneSeller = async (req, res) => {
 
     res.json(status);
 }
+
+const updateUserSeller = async (rec, res) => {
+    const replaceItem = req.body;
+    console.log(replaceItem);
+    const userID = req.params.uid
+    console.log(userID);
+
+    const  status = await userDao.updateUserSeller(userID, replaceItem);
+    res.json(status);
+
+
+}
+
+
 
 export default userController;
