@@ -350,7 +350,9 @@ const updateUserSeller = async (req, res) => {
     console.log(userID);
 
     const  status = await userDao.updateUserSeller(userID, replaceItem);
+    console.log(status);
     res.json(status);
+
 
 
 }
