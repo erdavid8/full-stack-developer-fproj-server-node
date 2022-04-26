@@ -236,13 +236,13 @@ const deleteProfileSeller = async (req, res) => {
 // update user admin
 const updateUserAdmin = async (req, res) => {
     const replaceItem = req.body;
-    const userID = req.params.uid
+    const userId = req.params.uid
 
-//    if ((new TextEncoder().encode(userId)).length !== 24) {
-//        return res.status(400).send({message: 'wrong number of ID characters'});
-//    }
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
 
-    const status = await userDao.updateUserAdmin(userID, replaceItem);
+    const status = await userDao.updateUserAdmin(userId, replaceItem);
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
     } else {
@@ -253,13 +253,13 @@ const updateUserAdmin = async (req, res) => {
 // update user seller
 const updateUserSeller = async (req, res) => {
     const replaceItem = req.body;
-    const userID = req.params.uid
+    const userId = req.params.uid
 
-//    if ((new TextEncoder().encode(userId)).length !== 24) {
-//        return res.status(400).send({message: 'wrong number of ID characters'});
-//    }
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
 
-    const status = await userDao.updateUserSeller(userID, replaceItem);
+    const status = await userDao.updateUserSeller(userId, replaceItem);
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
     } else {
@@ -270,13 +270,13 @@ const updateUserSeller = async (req, res) => {
 // update user buyer
 const updateUserBuyer = async (req, res) => {
     const replaceItem = req.body;
-    const userID = req.params.uid
+    const userId = req.params.uid
 
-//    if ((new TextEncoder().encode(userId)).length !== 24) {
-//        return res.status(400).send({message: 'wrong number of ID characters'});
-//    }
+    if ((new TextEncoder().encode(userId)).length !== 24) {
+        return res.status(400).send({message: 'wrong number of ID characters'});
+    }
 
-    const  status = await userDao.updateUserBuyer(userID, replaceItem);
+    const  status = await userDao.updateUserBuyer(userId, replaceItem);
 
     if (status.modifiedCount === 1) {
         res.sendStatus(200);
