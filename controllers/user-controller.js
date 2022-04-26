@@ -33,7 +33,7 @@ const userController = (app) => {
     app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
     app.put('/api/buyer-adopt/:uid', adoptBuyer);
-    app.put('/api/buyer-unadopted/:uid', unadoptBuyer);
+    app.put('/api/buyer-unadopt/:uid', unadoptBuyer);
     //app.put('/api/buyer-addpost/:uid', addPostedItemBuyer);
     //app.put('/api/buyer-removepost/:uid', removePostedItemBuyer);
 
