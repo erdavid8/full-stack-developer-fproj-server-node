@@ -343,7 +343,7 @@ const updatePhoneSeller = async (req, res) => {
     res.json(status);
 }
 
-const updateUserSeller = async (rec, res) => {
+const updateUserSeller = async (req, res) => {
     const replaceItem = req.body;
     console.log(replaceItem);
     const userID = req.params.uid
