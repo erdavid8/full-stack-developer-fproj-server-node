@@ -303,11 +303,21 @@ const unfollowBuyer = async (req, res) => {
 // update name seller
 const updateNameSeller = async (req, res) => {
     const updateName = req.body['name'];
+    const userID = req.params.uid;
+
+    const status = await userDao.updateNameSeller(userID, updateName);
+
+    res.json(status);
+}
+
+// update email seller
+const updateEmailSeller = async (req, res) => {
+    const updateName = req.body['name'];
     console.log(updateName)
     const userID = req.params.uid;
     console.log(userID)
 
-    const status = await userDao.updateNameSeller(userID, updateName);
+    const status = await userDao.updateEmailSeller(userID, updateName);
 
     res.json(status);
 }
