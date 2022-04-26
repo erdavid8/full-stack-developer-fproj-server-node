@@ -25,7 +25,7 @@ const userController = (app) => {
     // app.put('/api/seller-follow/:uid', followSeller);
     // app.put('/api/seller-unfollow/:uid', unfollowSeller);
     // update-seller like & posted, name, password, phone
-    app.put('/api/seller-addlike/:uid', addlikedItemSeller);
+/*    app.put('/api/seller-addlike/:uid', addlikedItemSeller);
     app.put('/api/seller-removelike/:uid', removelikedItemSeller);
     app.put('/api/seller-posted/:uid', postedItemsSeller);
     app.put('/api/seller-unposted/:uid', unpostedItemSeller);
@@ -33,16 +33,22 @@ const userController = (app) => {
     app.put('/api/seller-updateEmail/:uid', updateEmailSeller);
     app.put('/api/seller-updatePassword/:uid', updatePasswordSeller);
     app.put('/api/seller-updatePhone/:uid', updatePhoneSeller);
-    app.put('/api/seller-updateReplace/:uid', updateUserSeller);
-    app.put('/api/admin-updateReplace/:uid', updateUserAdmin);
+ */
+    app.put('/api/user-admin/:uid', updateUserAdmin);
+    app.put('/api/user-buyer/:uid', updateUserBuyer);
+    app.put('/api/user-seller/:uid', updateUserSeller);
+
+//    app.put('/api/seller-updateReplace/:uid', updateUserSeller);
+//    app.put('/api/admin-updateReplace/:uid', updateUserAdmin);
     // update-buyer like, adopted, follow
-    app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
+/*  app.put('/api/buyer-addlike/:uid', addlikedItemBuyer);
     app.put('/api/buyer-removelike/:uid', removelikedItemBuyer);
     app.put('/api/buyer-adopt/:uid', adoptBuyer);
     app.put('/api/buyer-unadopt/:uid', unadoptBuyer);
     app.put('/api/buyer-follow/:uid', followBuyer);
     app.put('/api/buyer-unfollow/:uid', unfollowBuyer);
     app.put('/api/buyer-updateReplace/:uid', updateUserBuyer);
+ */
 }
 
 // create new profile(somewhat same as signup) admin
