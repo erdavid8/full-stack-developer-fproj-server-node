@@ -1,5 +1,3 @@
-import pets from "./users/pet.js";
-import users from "./users/users.js";
 import petDao from "./dbase/pets/pet-dao.js";
 
 const petController = (app) => {
@@ -35,7 +33,7 @@ const findPetById = async (req, res) => {
     const pet = await petDao.findPetByID(petId);
 
     if (pet) {
-        res.json(pet);                                     // pet is in database
+        res.json(pet);                                      // pet is in database
     } else {
         res.sendStatus(404);                                // pet not found
     }
@@ -47,7 +45,7 @@ const findPetByName = async (req, res) => {
     const pet = await petDao.findPetByName(petName);
 
     if (pet) {
-        res.json(pet);                                     // pet is in database
+        res.json(pet);                                      // pet is in database
     } else {
         res.sendStatus(404);                                // pet not found
     }
