@@ -238,9 +238,9 @@ const updateUserAdmin = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
 
-    if ((new TextEncoder().encode(userId)).length !== 24) {
-        return res.status(400).send({message: 'wrong number of ID characters'});
-    }
+//    if ((new TextEncoder().encode(userId)).length !== 24) {
+//        return res.status(400).send({message: 'wrong number of ID characters'});
+//    }
 
     const status = await userDao.updateUserAdmin(userID, replaceItem);
     if (status.modifiedCount === 1) {
@@ -255,9 +255,9 @@ const updateUserSeller = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
 
-    if ((new TextEncoder().encode(userId)).length !== 24) {
-        return res.status(400).send({message: 'wrong number of ID characters'});
-    }
+//    if ((new TextEncoder().encode(userId)).length !== 24) {
+//        return res.status(400).send({message: 'wrong number of ID characters'});
+//    }
 
     const status = await userDao.updateUserSeller(userID, replaceItem);
     if (status.modifiedCount === 1) {
@@ -272,9 +272,9 @@ const updateUserBuyer = async (req, res) => {
     const replaceItem = req.body;
     const userID = req.params.uid
 
-    if ((new TextEncoder().encode(userId)).length !== 24) {
-        return res.status(400).send({message: 'wrong number of ID characters'});
-    }
+//    if ((new TextEncoder().encode(userId)).length !== 24) {
+//        return res.status(400).send({message: 'wrong number of ID characters'});
+//    }
 
     const  status = await userDao.updateUserBuyer(userID, replaceItem);
 
